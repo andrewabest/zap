@@ -1,0 +1,35 @@
+{
+  "name": "app",
+  "productName": "Zap",
+  "version": "0.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": {
+    "name": "Andrew Best",
+    "email": "andrew.a.best@gmail.com",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . $npm_package_productName --prune --asar --platform=win32 --arch=x64 --version=0.27.2"
+  },
+  "files": [
+    "main.js",
+    "index.html"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.1.0",
+    "jquery": "2.1.4",
+    "moment": "2.10.3"
+  },
+  "devDependencies": {
+    "electron-packager": "^4.1.2",
+    "electron-prebuilt": "^0.27.2"
+  }
+}
