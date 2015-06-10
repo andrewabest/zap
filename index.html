@@ -3,10 +3,25 @@
 <head>
 	<title>Flog!</title>
 	<script>
+
+		require('jquery')(document).ready(function () {
+			var webview = document.getElementById('mainApp');
+
+			webview.addEventListener('console-message', function(e) {
+			  console.log('Main app logged a message: ', e.message);
+			});
+
+			webview.addEventListener('dom-ready', function() {
+			  
+			  	var x = document.getElementById('mainApp');
+
+				x.openDevTools();
+			});
+		});
+
 	</script>
 </head>
 <body>
-	<p id="indicator"></p>
-	<webview id="foo" src="https://www.github.com/" style="width:640px; height:480px" disablewebsecurity allowfileaccessfromfiles></webview>
+	<webview id="mainApp" src="file://C:/projects/zap/application/main/index.html" style="height:400px;" autosize="on" minwidth="800" minheight="400" nodeintegration></webview>
 </body>
 </html>
