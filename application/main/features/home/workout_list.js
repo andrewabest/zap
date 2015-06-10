@@ -1,3 +1,5 @@
+var WebView = require('jquery');
+
 (function(flog, react, fluxxor) {
 	'use strict';
 	

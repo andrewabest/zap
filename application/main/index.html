@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flog</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <!-- Theme courtesy of http://bootswatch.com/ -->
+    <link href="content/ext/bootstrap.min.css" rel="stylesheet">
+    <link href="content/ext/font-awesome.min.css" rel="stylesheet">
+    <link href="content/please-wait.css" rel="stylesheet">
+    <link href="content/sweet-alert.css" rel="stylesheet">
+    <link href="content/site/site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="inner">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="line-height: 60px;">
+                    <a href="../react">
+                        <img src="content/img/flog-logo.png" alt="Flog" style="height: 40px;" />
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="container" style="margin-top:75px;">
+            <div id="app"></div>
+        </div>
+    </div>
+
+    <script src="scripts/please-wait.min.js"></script>
+
+    <script type="text/javascript">
+        window.loading_screen = window.pleaseWait({
+            logo: 'content/img/flog-logo.png',
+            backgroundColor: '#00bc8c',
+            loadingHtml: '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>'
+        });
+    </script>
+
+    <script src="scripts/ext/jquery-2.1.1.min.js"></script>
+    <script src="scripts/ext/react.js"></script>
+    <script src="scripts/ext/react-router.js"></script>
+    <script src="scripts/ext/JSXTransformer.js"></script>
+    <script src="scripts/ext/fluxxor.js"></script>
+    <script src="scripts/ext/underscore-min.js"></script>
+    <script src="scripts/sweet-alert.min.js"></script>
+
+    <script src="application/main/flux/actions.js"></script>
+    <script src="application/main/flux/workout_store.js"></script>
+
+    <script src="application/main/features/login/user_service.js"></script>
+    <script src="application/main/authentication.js"></script>
+    <script type="text/jsx" src="application/main/features/login/login.js"></script>
+
+    <script src="application/main/features/workout/workout_service.js"></script>
+    <script type="text/jsx" src="application/main/features/workout/set.js"></script>
+    <script type="text/jsx" src="application/main/features/workout/exercise_details.js"></script>
+    <script type="text/jsx" src="application/main/features/workout/exercise.js"></script>
+    <script type="text/jsx" src="application/main/features/workout/workout.js"></script>
+
+    <script type="text/jsx" src="application/main/features/home/workout_list_item.js"></script>
+    <script type="text/jsx" src="application/main/features/home/workout_list.js"></script>
+
+    <script type="text/jsx" src="application/main/not_found.js"></script>
+    <script type="text/jsx" src="application/main/app.js"></script>
+
+</body>
+</html>
