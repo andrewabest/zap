@@ -1,6 +1,8 @@
 'use strict';
 const app = require('app');
 const BrowserWindow = require('browser-window');
+const globalShortcut = require('global-shortcut');
+
 
 // report crashes to the Electron project
 require('crash-reporter').start();
@@ -44,4 +46,12 @@ app.on('activate-with-no-open-windows', function () {
 
 app.on('ready', function () {
 	mainWindow = createMainWindow();
+
+	globalShortcut.register('Alt+CmdOrCtrl+M', function() {
+		mainWindow.webContents.send('openSesame', 'Main');
+	});
+
+	globalShortcut.register('Alt+CmdOrCtrl+S', function() {
+		mainWindow.webContents.send('openSesame', 'Stats');
+	});
 });

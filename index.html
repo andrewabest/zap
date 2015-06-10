@@ -3,33 +3,29 @@
 <head>
 	<title>Flog!</title>
 	<script>
-
-		const globalShortcut = require('global-shortcut');
-
 		require('jquery')(document).ready(function () {
 			var webview = document.getElementById('mainApp');
 
 			webview.addEventListener('console-message', function(e) {
 			  console.log('Main app logged a message: ', e.message);
 			});
-
-			
 		});
 
-		require('app').on('ready', function () {
-		
-			globalShortcut.register('Alt+CmdOrCtrl+M', function() {
-				var x = document.getElementById('mainApp');
+		require('ipc').on('openSesame', function(arg) {
 
-				x.openDevTools();
-			});
+			if (arg == "Main") {
+				console.log('opening DevTools for Main');  
+				var main = document.getElementById('mainApp');
+				main.openDevTools();
+			}
 
-			globalShortcut.register('Alt+CmdOrCtrl+S', function() {
-				var x = document.getElementById('statsApp');
+			if (arg == "Stats") {
+				console.log('opening DevTools for Stats');  
+				var stats = document.getElementById('statsApp');
+				stats.openDevTools();
+			}
+		})
 
-				x.openDevTools();
-			});
-		});
 	</script>
 	<style type="text/css">
 		html, body {
