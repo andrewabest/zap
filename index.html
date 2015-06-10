@@ -4,6 +4,8 @@
 	<title>Flog!</title>
 	<script>
 
+		const globalShortcut = require('global-shortcut');
+
 		require('jquery')(document).ready(function () {
 			var webview = document.getElementById('mainApp');
 
@@ -11,17 +13,47 @@
 			  console.log('Main app logged a message: ', e.message);
 			});
 
-			webview.addEventListener('dom-ready', function() {
-			  
-			  	var x = document.getElementById('mainApp');
+			
+		});
+
+		require('app').on('ready', function () {
+		
+			globalShortcut.register('Alt+CmdOrCtrl+M', function() {
+				var x = document.getElementById('mainApp');
+
+				x.openDevTools();
+			});
+
+			globalShortcut.register('Alt+CmdOrCtrl+S', function() {
+				var x = document.getElementById('statsApp');
 
 				x.openDevTools();
 			});
 		});
-
 	</script>
+	<style type="text/css">
+		html, body {
+			height: 100%;
+		}
+
+		#mainApp{
+		  display:block;
+		  width: 100%;
+		  height: 60%;
+		  min-height: 400px;
+		}
+
+		#statsApp{
+		  display:block;
+		  width: 100%;
+		  height: 40%;
+		  min-height: 200px;
+		}
+	</style>
 </head>
 <body>
-	<webview id="mainApp" src="file://C:/projects/zap/application/main/index.html" style="height:400px;" autosize="on" minwidth="800" minheight="400" nodeintegration></webview>
+	<!-- TODO: figure out how to interpolate __dirname into these -->
+	<webview id="mainApp" src="file://C:/projects/zap/application/main/index.html" nodeintegration></webview>
+	<webview id="statsApp" src="file://C:/projects/zap/application/stats/index.html" nodeintegration></webview>
 </body>
 </html>
