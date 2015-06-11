@@ -83,6 +83,11 @@
 
 			flog.services.workout.completeWorkout(this.state.workout)
 				.done(function(data) {
+
+					// Send a message back to the main process to be routed through to other listening applications
+					console.log('sending workout-completed');
+					require('ipc').send('workout-completed', '');
+
 	                swal({
 	                    title: "Workout Completed!",
 	                    type: "success"

@@ -4,10 +4,16 @@
 	<title>Flog!</title>
 	<script>
 		require('jquery')(document).ready(function () {
-			var webview = document.getElementById('mainApp');
+			var main = document.getElementById('mainApp');
 
-			webview.addEventListener('console-message', function(e) {
+			main.addEventListener('console-message', function(e) {
 			  console.log('Main app logged a message: ', e.message);
+			});
+
+			var stats = document.getElementById('statsApp');
+
+			stats.addEventListener('console-message', function(e) {
+			  console.log('Stats app logged a message: ', e.message);
 			});
 		});
 
@@ -24,6 +30,15 @@
 				var stats = document.getElementById('statsApp');
 				stats.openDevTools();
 			}
+		})
+
+		require('ipc').on('workout-completed-event', function(arg) {
+
+			console.log('recieved workout-completed-event in render process');
+			console.log('sending workout-completed-event to nested webview process');
+
+			var stats = document.getElementById('statsApp');
+			stats.send('workout-completed-event');
 		})
 
 	</script>

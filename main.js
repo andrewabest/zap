@@ -2,6 +2,7 @@
 const app = require('app');
 const BrowserWindow = require('browser-window');
 const globalShortcut = require('global-shortcut');
+const ipc = require('ipc');
 
 
 // report crashes to the Electron project
@@ -12,8 +13,8 @@ require('electron-debug')();
 
 function createMainWindow () {
 	const win = new BrowserWindow({
-		width: 600,
-		height: 400,
+		width: 1024,
+		height: 768,
 		resizable: true
 	});
 
@@ -54,4 +55,13 @@ app.on('ready', function () {
 	globalShortcut.register('Alt+CmdOrCtrl+S', function() {
 		mainWindow.webContents.send('openSesame', 'Stats');
 	});
+});
+
+// Setup IPC
+ipc.on('workout-completed', function(event, arg) {
+
+  console.log('received workout-completed');
+  console.log('sending workout-completed-event to render process');
+
+  mainWindow.webContents.send('workout-completed-event', '');
 });
